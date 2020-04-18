@@ -9,7 +9,9 @@
     </head>
 
     <body>
-        
+        <pre>
+            {{ dump(app.user) }}
+        </pre>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#"> GameShop</a>
@@ -23,8 +25,29 @@
                     </li>
                     
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{path('app_login')}}"> Connexion <span class="sr-only">(current)</span></a>
+
+                        {% if app.user is null %}
+                            <a class="nav-link" href="{{path('app_login')}}"> Connexion <span class="sr-only">(current)</span></a>
+                        {% else %}
+                            <a class="nav-link" href="{{path('app_logout')}}"> {{app.user.nom}} Deconnexion <span class="sr-only">(current)</span></a>
+                        {% endif %}
                     </li>
+
+                    {% if app.user is null %}
+                     
+                    {% else %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{path('app_register')}}"> Mon Compte <span class="sr-only">(current)</span></a>
+                        </li>
+                    {% endif %}
+
+                    {% if app.user %}
+                     
+                    {% else %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{path('app_register')}}"> Inscription <span class="sr-only">(current)</span></a>
+                        </li>
+                    {% endif %}
                     
                     </ul>
                 </div>

@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-        
+
         {% for produit in produits %}
             <tr>
                 <td>{{ produit.id }}</td>
@@ -31,7 +31,9 @@
 	                {% endif %}
                 <td>
                     <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
