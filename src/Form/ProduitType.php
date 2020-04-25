@@ -17,6 +17,7 @@ class ProduitType extends AbstractType
         $builder
             ->add('Nom')
             ->add('Description')
+            ->add('Prix')
             ->add('Stock')
             ->add('Photo', FileType::class, [
                 'label' => 'Image (jpeg file)',

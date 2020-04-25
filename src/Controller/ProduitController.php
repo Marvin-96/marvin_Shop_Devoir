@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Entity\Panier;
+use App\Form\PanierType;
 use App\Form\ProduitType;
+use App\Entity\User;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/")
@@ -71,12 +75,30 @@ class ProduitController extends AbstractController
     
 
     /**
-     * @Route("/produit/{id}", name="produit_show", methods={"GET"})
+     * @Route("/produit/{id}", name="produit_show")
      */
-    public function show(Produit $produit): Response
+    public function show(Produit $produit=null, UserInterface $user, Request $request ): Response
     {
+    
+            $em = $this->getDoctrine()->getManager();
+            $paniers = $em->getRepository(Panier::class)->findAll();
+            
+            $panier = new Panier();
+            
+            $form = $this->createForm(PanierType::class, $panier);
+            $form->handleRequest($request);
+    
+            if($form->isSubmitted() && $form->isValid()){
+                $panier->setDateAjout(new \DateTime());
+                $panier->setProduit($produit);
+                $panier->setUser($user);
+                $em->persist($panier);
+                $em->flush();
+            }
+
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
+            'panier_add' => $form->createView(),
         ]);
     }
 

@@ -1,10 +1,11 @@
 
 {% extends 'base.html.twig' %}
 
+ 
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-
+{{ dump(produits) }}
     <h1>Produit index</h1>
 
     <table class="table">
@@ -14,6 +15,7 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Stock</th>
+                <th>Prix</th>
                 <th>Photo</th>
                 <th>actions</th>
             </tr>
@@ -26,14 +28,16 @@
                 <td>{{ produit.Nom }}</td>
                 <td>{{ produit.Description }}</td>
                 <td>{{ produit.Stock }}</td>
+                <td>{{ produit.Prix }}</td>
                 {% if produit.photo is not null %}
 		            <td> <img width="40px" src="{{asset('/uploads/images/'~ produit.Photo)}}"> </td>
 	                {% endif %}
                 <td>
                     <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
-                    {% if is_granted('ROLE_ADMIN') %}
+                    
+                    {# {% if is_granted('ROLE_ADMIN') %} #}
                     <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
-                    {% endif %}
+                    {# {% endif %} #}
                 </td>
             </tr>
         {% else %}
@@ -43,6 +47,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('produit_new') }}">Create new</a>
+        {# {% if is_granted('ROLE_ADMIN') %} #}
+            <a href="{{ path('produit_new') }}">Create new</a>
+        {# {% endif %} #}
 {% endblock %}
