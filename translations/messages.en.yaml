@@ -6,3 +6,18 @@ menu:
         connexion: "Log In"
         inscription: "Sign up"
         deconnexion: "log Out"
+
+pageUser:
+
+        utilisateurs: "Users"
+
+
+
+tableauUser: 
+
+                email: "Email"
+                roles: "Roles"
+                nom: "Last Name"
+                prenom: "First Name"
+
+retour: "Back to list" 

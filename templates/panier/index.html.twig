@@ -4,20 +4,25 @@
 {% block title %}Panier index{% endblock %}
 
 {% block body %}
-{{ dump(paniers) }}
+{{ dump(app.user.paniers) }}
 
 
-    <h1>Panier index</h1>
-<div class="container">
     
+<div class="container">
+    <h1>Panier index</h1>
+
+    {% set total_produit = 0 %} 
+    {% for quantite in app.user.paniers %}
+    {% set total_produit = total_produit + 0 %} 
+    {% endfor %}
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                
                 <th>Nom</th>
-                <th>Description</th>
-                <th>Stock</th>
+                <th>Date d'ajout</th>
+                <th>Nombre</th>
                 <th>Prix</th>
                 <th>actions</th>
             </tr>
@@ -25,11 +30,9 @@
         <tbody>
         {% if is_granted('ROLE_USER') %} 
             
-            {% for panier in paniers %}
+            {% for panier in app.user.paniers %}
                     <tr>
-                    
-
-                        <td>{{ panier.id }}</td>
+  
                         <td>{{ panier.Produit.Nom }}</td>
                         <td>{{ panier.dateAjout.format('d/m/Y')}}</td>
                         {# <td>{{ panier.Produit.Nom }}</td> #}
@@ -51,6 +54,11 @@
                         </tr>
             {% endif %}
 
+        {% set total_panier = 0 %} 
+            {% for prix in app.user.paniers %}
+                {% set total_panier = total_panier + (prix.quantite * prix.produit.prix) %} 
+        {% endfor %}
+        <td><h3> {{total_panier}}€</h3></td>
        
         </tbody>
     </table>

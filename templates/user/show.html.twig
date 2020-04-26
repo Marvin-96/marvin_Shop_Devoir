@@ -3,8 +3,10 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
-
+    
+ <div class="container">
+     <h1> {{ 'pageUser.utilisateurs'|trans }} </h1>
+ 
     <table class="table">
         <tbody>
             <tr>
@@ -12,31 +14,28 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>{{ 'tableauUser.email'|trans }}</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
+                <th>{{ 'tableauUser.roles'|trans }}  </th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
+                <th>{{ 'tableauUser.nom'|trans }}</th>
                 <td>{{ user.nom }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
+                <th>{{ 'tableauUser.prenom'|trans }}</th>
                 <td>{{ user.prenom }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    <a href="{{ path('user_index') }}"> {{ 'retour'|trans }}</a>
 
     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('user/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

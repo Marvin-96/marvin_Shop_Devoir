@@ -7,10 +7,10 @@
 {% block body %}
 {{ dump(produits)}}
 
-    <h1>Produit index</h1>
+    
 <div class="container">
     
-
+    <h1>Produit index</h1>
     <table class="table">
         <thead>
             <tr>
@@ -33,14 +33,14 @@
                 <td>{{ produit.Stock }}</td>
                 <td>{{ produit.Prix }} €</td>
                 {% if produit.photo is not null %}
-		            <td> <img width="40px" src="{{asset('/uploads/images/'~ produit.Photo)}}"> </td>
+		        <td> <img width="40px" src="{{asset('/uploads/images/'~ produit.Photo)}}"> </td>
 	                {% endif %}
                 <td>
                     <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
                     
-                    {# {% if is_granted('ROLE_ADMIN') %} #}
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
-                    {# {% endif %} #}
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -50,8 +50,9 @@
         {% endfor %}
         </tbody>
     </table>
-    </div>
-        {# {% if is_granted('ROLE_ADMIN') %} #}
+    
+        {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('produit_new') }}">Create new</a>
-        {# {% endif %} #}
+        {% endif %}
+    </div>
 {% endblock %}
