@@ -93,6 +93,7 @@ class ProduitController extends AbstractController
                 $panier->setProduit($produit); // On set le produit ajouté au panier
                 $panier->setUser($user); // on recupere l'id de l'user
                 $panier->setEtat(false); 
+                $this->addFlash('success', 'Produit ajouté');
                 $em->persist($panier); 
                 $em->flush();
             }
@@ -113,7 +114,7 @@ class ProduitController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Produit modifié');
             return $this->redirectToRoute('produit_index');
         }
 

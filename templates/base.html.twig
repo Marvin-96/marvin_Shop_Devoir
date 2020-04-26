@@ -51,9 +51,9 @@
                             <a class="nav-link" href="{{path('panier')}}"> {{'menu.panier'|trans}} <span class="sr-only">(current)</span></a>
                     {% endif %}
 
-                     {% if is_granted('ROLE_SUPER_USER') %} 
+                     {% if is_granted('ROLE_SUPER_ADMIN') %} 
                     
-                            <a class="nav-link" href="{{path('panierlist')}}"> {{'commandList'|trans}} <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{path('panier_list')}}"> {{'commandList'|trans}} <span class="sr-only">(current)</span></a>
                     {% endif %}
                     
                     </ul>
@@ -61,6 +61,13 @@
                 </div>
                 </nav>
         
+        
+        {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <p class="alert alert-{{ type }}">{{ message }}</p>
+                {% endfor %}
+            {% endfor %}
+
         
         {% block body %}
         {% endblock %}

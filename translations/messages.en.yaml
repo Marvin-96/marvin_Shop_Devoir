@@ -44,3 +44,13 @@ tableauUser:
                 prenom: "First Name"
 
 retour: "Back to list" 
+
+
+# Form
+
+Nom: 'Name'
+Prenom: "First Name"
+Quantite: 'Quantity :' 
+Prix: 'Price' 
+Image: 'Image' 
+Sauvegarder: 'Save'

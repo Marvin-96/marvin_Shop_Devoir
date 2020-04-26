@@ -58,7 +58,7 @@
             {% for prix in app.user.paniers %}
                 {% set total_panier = total_panier + (prix.quantite * prix.produit.prix) %} 
         {% endfor %}
-        <td><h3> {{total_panier}}€</h3></td>
+        <td><h3> Total : {{total_panier}} €</h3></td>
        
         </tbody>
     </table>

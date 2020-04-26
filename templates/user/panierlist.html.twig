@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-        {% if is_granted('ROLE_SUPER_USER') %} 
+        {% if is_granted('ROLE_SUPER_ADMIN') %} 
             
             {% for panier in paniers %}
                     <tr>
@@ -33,7 +33,7 @@
                         {# <td>{{ panier.Produit.Nom }}</td> #}
                         <td>{{ panier.quantite }}</td>
                         <td>{{ panier.Produit.Prix }} €</td>
-                        <td><a href="{{path('panier_delete', {'id': panier.id})}}"> {{"tableau.supprimer" |trans }}</a></td>
+                        <td><a href="{{path('panier_delete_super', {'id': panier.id})}}"> {{"tableau.supprimer" |trans }}</a></td>
                 
                         </td> 
                     </tr>
@@ -45,7 +45,7 @@
 
             {% else %}
                         <tr>
-                            <td colspan="6">Connectez vous</td>
+                            <td colspan="6">Espace reservé</td>
                         </tr>
             {% endif %}
 

@@ -49,7 +49,7 @@ class PanierController extends AbstractController
 
 
     /**
-     * @Route("/panierlist", name="panierList")
+     * @Route("/panierlist", name="panier_list")
      */
     public function panierList(Panier $Panier= null, Request $request, PanierRepository $panierRepository, $id=null  )
     {
@@ -76,6 +76,23 @@ class PanierController extends AbstractController
             $this->addFlash('success', 'Produit supprimée du panier');
         }
         return $this->redirectToRoute('panier');
+
+    }
+
+
+     /**
+     * @Route("/panier/delete/{id}", name="panier_delete_super")
+     */
+    public function deleteSuper(Panier $panier=null){
+
+        if($panier != null){
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($panier);
+            $em->flush();
+
+            $this->addFlash('success', 'Produit supprimée du panier');
+        }
+        return $this->redirectToRoute('panier_list');
 
     }
 }
