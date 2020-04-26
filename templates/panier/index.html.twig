@@ -8,6 +8,8 @@
 
 
     <h1>Panier index</h1>
+<div class="container">
+    
 
     <table class="table">
         <thead>
@@ -21,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-        {% if is_granted('ROLE_ADMIN') %} 
+        {% if is_granted('ROLE_USER') %} 
             
             {% for panier in paniers %}
                     <tr>
@@ -32,7 +34,7 @@
                         <td>{{ panier.dateAjout.format('d/m/Y')}}</td>
                         {# <td>{{ panier.Produit.Nom }}</td> #}
                         <td>{{ panier.quantite }}</td>
-                        <td>{{ panier.Produit.Prix }}</td>
+                        <td>{{ panier.Produit.Prix }} €</td>
                         <td><a href="{{path('panier_delete', {'id': panier.id})}}">suprimer</a></td>
                 
                         </td> 
@@ -52,5 +54,5 @@
        
         </tbody>
     </table>
-    
+</div>
 {% endblock %}

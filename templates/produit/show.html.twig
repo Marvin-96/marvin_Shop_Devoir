@@ -29,8 +29,12 @@
             </tr>
         </tbody>
     </table>
-     
-    {{form(panier_add)}}
+
+      {% if is_granted('ROLE_USER') %}
+         {{form(panier_add)}}
+     {% else %}
+     <a href="{{ path('app_login') }}"> Connectez-vous </a>
+    {% endif %}
 
     <a href="{{ path('produit_index') }}">back to list</a>
 

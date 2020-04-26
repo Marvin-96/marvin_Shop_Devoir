@@ -5,8 +5,11 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-{{ dump(produits) }}
+{{ dump(produits)}}
+
     <h1>Produit index</h1>
+<div class="container">
+    
 
     <table class="table">
         <thead>
@@ -28,7 +31,7 @@
                 <td>{{ produit.Nom }}</td>
                 <td>{{ produit.Description }}</td>
                 <td>{{ produit.Stock }}</td>
-                <td>{{ produit.Prix }}</td>
+                <td>{{ produit.Prix }} €</td>
                 {% if produit.photo is not null %}
 		            <td> <img width="40px" src="{{asset('/uploads/images/'~ produit.Photo)}}"> </td>
 	                {% endif %}
@@ -47,6 +50,7 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
         {# {% if is_granted('ROLE_ADMIN') %} #}
             <a href="{{ path('produit_new') }}">Create new</a>
         {# {% endif %} #}
