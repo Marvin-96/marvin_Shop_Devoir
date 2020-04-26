@@ -1,0 +1,8 @@
+menu:
+
+        accueil: "Home"
+        monCompte: "My Account"
+        panier: "Bag"
+        connexion: "Log In"
+        inscription: "Sign up"
+        deconnexion: "log Out"

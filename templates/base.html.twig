@@ -23,13 +23,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{path('produit_index')}}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{path('produit_index')}}"> {{'menu.accueil'|trans}} <span class="sr-only">(current)</span></a>
                     </li>
                     
                     <li class="nav-item active">
 
                         {% if app.user is null %}
-                            <a class="nav-link" href="{{path('app_login')}}"> Connexion <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{path('app_login')}}"> {{'menu.connexion'|trans}} <span class="sr-only">(current)</span></a>
                         {% else %}
                             <a class="nav-link" href="{{path('app_logout')}}"> {{app.user.nom}}    {{'menu.deconnexion'|trans}}  <span class="sr-only">(current)</span></a>
                         {% endif %}
@@ -45,10 +45,10 @@
 
                     {% if app.user is null %}
                      <li class="nav-item active">
-                            <a class="nav-link" href="{{path('app_register')}}"> Inscription <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{path('app_register')}}"> {{'menu.inscription'|trans}}  <span class="sr-only">(current)</span></a>
                         </li>
                     {% else %}
-                        
+                            <a class="nav-link" href="{{path('panier')}}"> {{'menu.panier'|trans}} <span class="sr-only">(current)</span></a>
                     {% endif %}
                     
                     </ul>
