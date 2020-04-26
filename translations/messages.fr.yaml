@@ -1,0 +1,44 @@
+menu:
+
+        accueil: "Accueil"
+        monCompte: "Mon Compte"
+        panier: "Panier"
+        connexion: "Connexion"
+        inscription: "Inscription"
+        deconnexion: "Deconnexion"
+
+pageUser:
+
+        utilisateurs: "Utilisateurs"
+
+
+pageProduitIndex: 
+        creer: "Creer"
+        noproduit: "Nos produits"
+        modifier: "Modifier"
+        voir: "Voir"
+
+panierindex: "Votre Panier"
+produitIndex: "Nos Produits"
+
+tableau:
+        nom: "Nom"
+        datedajout: "Date d'ajout"
+        nombre: "Nombre"
+        prix: "Prix"
+        actions: "actions"
+        supprimer: "supprimer"
+        stock: "stock"
+        photo: "photo"
+        description: "Description"
+
+                
+
+tableauUser: 
+
+                email: "Email"
+                roles: "Roles"
+                nom: "Last Name"
+                prenom: "First Name"
+
+retour: "retour" 

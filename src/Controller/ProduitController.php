@@ -22,9 +22,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class ProduitController extends AbstractController
 {
     /**
-     * @Route("/produit", name="produit_index", methods={"GET"})
+     * @Route("/", name="produit_index", methods={"GET"})
      */
-    public function index(ProduitRepository $produitRepository): Response
+    public function index(ProduitRepository $produitRepository): Response // On affiche tous les produits dans l'index
     {
         return $this->render('produit/index.html.twig', [
             'produits' => $produitRepository->findAll(),
@@ -34,7 +34,7 @@ class ProduitController extends AbstractController
     /**
      * @Route("/produit/new", name="produit_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request): Response // On crée un nouveau produit dans "produit/new"
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
@@ -77,7 +77,7 @@ class ProduitController extends AbstractController
     /**
      * @Route("/produit/{id}", name="produit_show")
      */
-    public function show(Produit $produit=null, UserInterface $user, Request $request ): Response
+    public function show(Produit $produit=null, UserInterface $user, Request $request ): Response // On affiche le produit selectionner par l'user et on traite l'ajout au panier
     {
     
             $em = $this->getDoctrine()->getManager();
@@ -89,10 +89,11 @@ class ProduitController extends AbstractController
             $form->handleRequest($request);
     
             if($form->isSubmitted() && $form->isValid()){
-                $panier->setDateAjout(new \DateTime());
-                $panier->setProduit($produit);
-                $panier->setUser($user);
-                $em->persist($panier);
+                $panier->setDateAjout(new \DateTime()); // On set la date d'ajout au panier
+                $panier->setProduit($produit); // On set le produit ajouté au panier
+                $panier->setUser($user); // on recupere l'id de l'user
+                $panier->setEtat(false); 
+                $em->persist($panier); 
                 $em->flush();
             }
 

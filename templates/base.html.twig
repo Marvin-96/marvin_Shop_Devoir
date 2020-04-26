@@ -10,7 +10,7 @@
 
     <body>
         <pre>
-            {{ dump(app.user) }}
+            {# {{ dump(app.user) }} #}
             {# {{ dump(app.user.Panier.contenuPanier) }} #}
         </pre>
 
@@ -39,7 +39,7 @@
                      
                     {% else %}
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('user_edit', {'id': app.user.id}) }}"> Mon Compte <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ path('user_edit', {'id': app.user.id}) }}">  {{'menu.monCompte'|trans}}<span class="sr-only">(current)</span></a>
                         </li>
                     {% endif %}
 
@@ -49,6 +49,11 @@
                         </li>
                     {% else %}
                             <a class="nav-link" href="{{path('panier')}}"> {{'menu.panier'|trans}} <span class="sr-only">(current)</span></a>
+                    {% endif %}
+
+                     {% if is_granted('ROLE_SUPER_USER') %} 
+                    
+                            <a class="nav-link" href="{{path('panierlist')}}"> {{'commandList'|trans}} <span class="sr-only">(current)</span></a>
                     {% endif %}
                     
                     </ul>

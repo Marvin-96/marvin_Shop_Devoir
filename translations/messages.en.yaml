@@ -11,7 +11,30 @@ pageUser:
 
         utilisateurs: "Users"
 
+commandList: "Command List"
 
+
+pageProduitIndex: 
+        creer: "Create new"
+        noproduit: "no records found"
+        modifier: "edit"
+        voir: "Show"
+
+panierindex: "Your bag"
+produitIndex: "Our Products"
+
+tableau:
+        nom: "Name"
+        datedajout: "Added date"
+        nombre: "Number"
+        prix: "Price"
+        actions: "actions"
+        supprimer: "delete"
+        stock: "stock"
+        photo: "photo"
+        description: "Description"
+
+                
 
 tableauUser: 
 
